@@ -7,6 +7,9 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.client.standard.StandardWebSocketClient;
@@ -31,12 +34,20 @@ public class JanusProxyHandler extends TextWebSocketHandler {
         this.videoBussUrl = videoBussUrl;
         this.rtpHost = rtpHost;
         this.rtpPort = rtpPort;
+
+    private WebSocketSession janusSession;
+
+    public JanusProxyHandler(@Value("${janus.url}") String janusUrl) {
+        this.janusUrl = janusUrl;
+
     }
 
     @Override
     public void afterConnectionEstablished(WebSocketSession frontendSession) throws Exception {
         StandardWebSocketClient client = new StandardWebSocketClient();
         WebSocketSession janusSession = client.doHandshake(new TextWebSocketHandler() {
+
+        this.janusSession = client.doHandshake(new TextWebSocketHandler() {
             @Override
             protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
                 if (frontendSession.isOpen()) {
@@ -55,6 +66,7 @@ public class JanusProxyHandler extends TextWebSocketHandler {
     @Override
     protected void handleTextMessage(WebSocketSession frontendSession, TextMessage message) throws Exception {
         WebSocketSession janusSession = janusSessions.get(frontendSession.getId());
+
         if (janusSession != null && janusSession.isOpen()) {
             janusSession.sendMessage(message);
         }
@@ -67,4 +79,5 @@ public class JanusProxyHandler extends TextWebSocketHandler {
             janusSession.close();
         }
     }
+
 }
