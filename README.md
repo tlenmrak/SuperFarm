@@ -12,8 +12,6 @@ forwards all messages to a Janus server specified via the `janus.url` property (
 `videobuss.url` with RTP details (`janus.rtp.host` and `janus.rtp.port`) when a
 frontend connects so that the video stream can start.
 
-`ws://localhost:8188/`).
-
 To run the service:
 
 ```bash
@@ -52,4 +50,3 @@ mvn spring-boot:run
 The service listens on port `8081` by default and exposes a `/start` endpoint
 that the signaling service calls with RTP connection information. Once active,
 the frontend demo will display the streamed video.
-

@@ -7,47 +7,35 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.client.standard.StandardWebSocketClient;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
+@Slf4j
 public class JanusProxyHandler extends TextWebSocketHandler {
 
-    private final String janusUrl;
-    private final String videoBussUrl;
-    private final String rtpHost;
-    private final int rtpPort;
+    @Value("${janus.url}")
+    private String janusUrl;
+
+    @Value("${videobuss.url}")
+    private String videoBussUrl;
+
+    @Value("${janus.rtp.host}")
+    private String rtpHost;
+
+    @Value("${janus.rtp.port}")
+    private int rtpPort;
+
     private final Map<String, WebSocketSession> janusSessions = new ConcurrentHashMap<>();
     private final RestTemplate rest = new RestTemplate();
-
-    public JanusProxyHandler(
-            @Value("${janus.url}") String janusUrl,
-            @Value("${videobuss.url}") String videoBussUrl,
-            @Value("${janus.rtp.host}") String rtpHost,
-            @Value("${janus.rtp.port}") int rtpPort) {
-        this.janusUrl = janusUrl;
-        this.videoBussUrl = videoBussUrl;
-        this.rtpHost = rtpHost;
-        this.rtpPort = rtpPort;
-
-    private WebSocketSession janusSession;
-
-    public JanusProxyHandler(@Value("${janus.url}") String janusUrl) {
-        this.janusUrl = janusUrl;
-
-    }
 
     @Override
     public void afterConnectionEstablished(WebSocketSession frontendSession) throws Exception {
         StandardWebSocketClient client = new StandardWebSocketClient();
         WebSocketSession janusSession = client.doHandshake(new TextWebSocketHandler() {
-
-        this.janusSession = client.doHandshake(new TextWebSocketHandler() {
             @Override
             protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
                 if (frontendSession.isOpen()) {
@@ -61,12 +49,12 @@ public class JanusProxyHandler extends TextWebSocketHandler {
             videoBussUrl + "/start",
             Map.of("sfuHost", rtpHost, "sfuPort", rtpPort),
             String.class);
+        log.info("Streaming started for session {}", frontendSession.getId());
     }
 
     @Override
     protected void handleTextMessage(WebSocketSession frontendSession, TextMessage message) throws Exception {
         WebSocketSession janusSession = janusSessions.get(frontendSession.getId());
-
         if (janusSession != null && janusSession.isOpen()) {
             janusSession.sendMessage(message);
         }
@@ -78,6 +66,6 @@ public class JanusProxyHandler extends TextWebSocketHandler {
         if (janusSession != null && janusSession.isOpen()) {
             janusSession.close();
         }
+        log.info("Session {} closed", frontendSession.getId());
     }
-
 }

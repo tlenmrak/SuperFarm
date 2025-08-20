@@ -9,8 +9,10 @@ import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
+@Slf4j
 public class StreamController {
 
     @Value("${video.file}")
@@ -25,6 +27,7 @@ public class StreamController {
             "rtp://" + request.sfuHost() + ":" + request.sfuPort()
         );
         new ProcessBuilder(command).inheritIO().start();
+        log.info("Started streaming {} to {}:{}", file.getName(), request.sfuHost(), request.sfuPort());
         return "stream started";
     }
 
