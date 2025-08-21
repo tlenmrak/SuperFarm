@@ -11,10 +11,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class WebSocketConfig implements WebSocketConfigurer {
 
+    public static final String WS = "/ws";
+    public static final String ALL = "*";
     private final JanusProxyHandler handler;
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(handler, "/ws").setAllowedOrigins("*");
+        registry.addHandler(handler, WS).setAllowedOrigins(ALL);
     }
 }
