@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  janus:
+    image: canyanorsonic/janus-gateway:latest
+    restart: unless-stopped
+    ports:
+      - "8088:8088"
+      - "8188:8188"
+      - "5004:5004/udp"
+    volumes:
+      - ./janus/janus.transport.websockets.jcfg:/usr/local/etc/janus/janus.transport.websockets.jcfg
+      - ./janus/janus.plugin.streaming.jcfg:/usr/local/etc/janus/janus.plugin.streaming.jcfg

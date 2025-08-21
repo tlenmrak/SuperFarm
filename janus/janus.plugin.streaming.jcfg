@@ -1,0 +1,13 @@
+streams: [
+  {
+    type = "rtp"
+    id = 1
+    description = "VideoBuss feed"
+    audio = false
+    video = true
+    videoport = 5004
+    videoiface = "0.0.0.0"
+    videopt = 96
+    videortpmap = "H264/90000"
+  }
+]
