@@ -1,4 +1,4 @@
-package com.example.signaling;
+package com.example.signaling.config;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;

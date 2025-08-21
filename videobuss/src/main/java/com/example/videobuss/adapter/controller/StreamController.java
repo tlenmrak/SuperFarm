@@ -1,4 +1,4 @@
-package com.example.videobuss;
+package com.example.videobuss.adapter.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +11,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+<<<<<<< Updated upstream:videobuss/src/main/java/com/example/videobuss/StreamController.java
 public class StreamController {
+=======
+@RequiredArgsConstructor
+@Slf4j
+public class aStreamController {
+>>>>>>> Stashed changes:videobuss/src/main/java/com/example/videobuss/adapter/controller/StreamController.java
 
     @Value("${video.file}")
     private String videoFile;

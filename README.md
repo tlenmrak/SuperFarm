@@ -4,6 +4,19 @@ This repository contains a minimal example for streaming from an iPhone through 
 It includes a Spring Boot signaling service and a tiny browser client that proxies WebRTC
 messages through the signaling layer to Janus.
 
+## Janus SFU
+
+Use the provided `docker-compose.yml` to start a Janus instance configured
+for this demo. It exposes the WebSocket transport on port `8188` and listens
+for RTP on UDP port `5004`.
+
+```bash
+docker compose up janus
+```
+
+Janus will read its configuration from the files in the `janus/` directory
+to enable WebSockets and a streaming mountpoint with ID `1`.
+
 ## Signal service
 
 Source code lives in `signal-service`. The service exposes a WebSocket endpoint at `/ws` and
