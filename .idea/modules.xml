@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/SuperFarm.iml" filepath="$PROJECT_DIR$/.idea/SuperFarm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/signal-service/signal-service.iml" filepath="$PROJECT_DIR$/signal-service/signal-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/videobuss/videobuss.iml" filepath="$PROJECT_DIR$/videobuss/videobuss.iml" />
+    </modules>
+  </component>
+</project>

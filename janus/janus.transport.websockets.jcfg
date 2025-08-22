@@ -3,4 +3,6 @@ general: {
   wss = false
   ws_port = 8188
   ws_interface = "0.0.0.0"
+  ws_path = "/janus"
+  ws_allowed_origins = [ "*", "http://localhost", "http://127.0.0.1" ]
 }

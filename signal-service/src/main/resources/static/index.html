@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <title>Janus Streaming via Spring WS Proxy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        body { font-family: system-ui, Segoe UI, Roboto, Arial, sans-serif; margin: 24px; }
+        .row { margin-bottom: 12px; }
+        button { padding: 8px 14px; margin-right: 8px; }
+        video { width: 88vw; max-width: 1280px; background: #000; border-radius: 8px; }
+        #log { white-space: pre-wrap; font-family: ui-monospace, Menlo, Consolas, monospace;
+            background:#111; color:#ddd; padding:12px; border-radius:8px; max-height: 40vh; overflow:auto }
+    </style>
+</head>
+<body>
+<div class="row">
+    <button id="start">Start</button>
+    <button id="stop" disabled>Stop</button>
+</div>
+
+<div class="row">
+    <video id="remote" autoplay playsinline controls muted></video>
+</div>
+
+<div class="row"><div id="log" aria-live="polite"></div></div>
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+
+<!-- Подключаем только наш модуль (он сам загрузит janus) -->
+<script type="module" src="./app.module.js"></script>
+</body>
+</html>

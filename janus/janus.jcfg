@@ -1,0 +1,37 @@
+# Основной конфиг Janus
+# Докер: публикуем RTP/ICE порты и подменяем внешний адрес для кандидатов
+
+general: {
+  # логгинг
+  log_to_stdout = true
+  debug_level = 4
+  candidates_timeout = 120
+  # Если смотришь из того же браузера на том же ПК — оставь 127.0.0.1.
+  # Если смотреть будут с другого устройства в локалке — поставь LAN-IP хоста.
+  nat_1_1_mapping = "127.0.0.1"
+
+  # STUN для srflx-кандидатов
+  stun_server = "stun.rtc.yandex.net"
+  stun_port   = 19302
+
+  ice_tcp = true
+
+  ipv6 = false
+
+  # Ускоряет ICE (кандидаты шлются сразу)
+  full_trickle = true
+}
+
+nat: {
+  # мы в Docker на Windows; с браузера на хосте удобно рекламировать 127.0.0.1
+  nat_1_1_mapping = "127.0.0.1"
+  ignore_mdsn = true   # <- критично: не пытаться резолвить *.local кандидаты
+  mdsn_enabled = false
+}
+
+media: {
+  # Диапазон для WebRTC (Janus <-> браузер). Выделим небольшой пул.
+  rtp_port_range = "20000-20100"
+  # Можно включить TCP как запасной вариант:
+  ice_tcp = true
+}

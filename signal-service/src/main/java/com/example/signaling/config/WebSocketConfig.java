@@ -9,6 +9,9 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 @EnableWebSocket
 public class WebSocketConfig implements WebSocketConfigurer {
 
+    public static final String ALL = "*";
+    public static final String WS = "/ws";
+    public static final String WS_JANUS = "/ws/janus";
     private final JanusProxyHandler handler;
 
     public WebSocketConfig(JanusProxyHandler handler) {
@@ -17,6 +20,8 @@ public class WebSocketConfig implements WebSocketConfigurer {
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(handler, "/ws").setAllowedOrigins("*");
+        registry
+                .addHandler(handler, WS, WS_JANUS)
+                .setAllowedOriginPatterns(ALL);
     }
 }

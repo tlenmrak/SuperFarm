@@ -5,12 +5,167 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="299932f7-60d5-468f-8907-ac1aedcd8740" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signal-service/signal-service.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/JanusProxyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/config/JanusProxyHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/WebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/config/WebSocketConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/videobuss/src/main/java/com/example/videobuss/StreamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/videobuss/src/main/java/com/example/videobuss/adapter/controller/StreamController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/videobuss/videobuss.iml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/SuperFarm.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_4_14.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_4_14.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_15_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_15_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_15_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_15_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_15_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_15_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_9_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_micrometer_micrometer_commons_1_12_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_micrometer_micrometer_observation_1_12_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_activation_jakarta_activation_api_2_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_annotation_jakarta_annotation_api_2_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_xml_bind_jakarta_xml_bind_api_4_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_14_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_14_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_accessors_smart_2_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_json_smart_2_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_21_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_21_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_10_1_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_10_1_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_10_1_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_24_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_awaitility_awaitility_4_2_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_java_websocket_Java_WebSocket_1_5_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_10_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_10_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_10_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_10_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_10_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_10_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_5_7_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_5_7_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_3_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_9_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_32.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_2_0_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_2_0_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_3_2_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_3_2_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_3_2_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_3_2_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_3_2_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_3_2_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_3_2_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_3_2_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_websocket_3_2_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_3_2_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_3_2_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_6_1_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_6_1_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_6_1_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_6_1_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_6_1_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_6_1_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_messaging_6_1_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_6_1_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_6_1_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_6_1_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_websocket_6_1_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_9_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ffmpeg_10000.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ffmpeg_10001.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ffmpeg_10004.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/janus/janus.jcfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/signal-service.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/config/AppConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/app.module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/janus.es.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/.package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/janus-gateway/COPYING" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/janus-gateway/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/janus-gateway/npm/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/janus-gateway/npm/dist/janus.es.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/janus-gateway/npm/janus.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/janus-gateway/npm/src/janus.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/janus-gateway/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/sdp/.eslintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/sdp/.github/workflows/npm-test.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/sdp/.nyc_output/a9b935d8-5f14-4c64-b895-6b0ece2e9d7c.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/sdp/.nyc_output/processinfo/a9b935d8-5f14-4c64-b895-6b0ece2e9d7c.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/sdp/.nyc_output/processinfo/index.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/sdp/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/sdp/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/sdp/coverage.lcov" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/sdp/dist/sdp.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/sdp/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/sdp/sdp.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/sdp/sdp.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/.eslintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/CONTRIBUTING.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/Gruntfile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/LICENSE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/bower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/dist/adapter_core.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/dist/adapter_core5.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/dist/adapter_factory.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/dist/chrome/chrome_shim.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/dist/chrome/getdisplaymedia.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/dist/chrome/getusermedia.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/dist/chrome/selectaudiooutput.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/dist/common_shim.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/dist/firefox/firefox_shim.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/dist/firefox/getdisplaymedia.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/dist/firefox/getusermedia.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/dist/safari/safari_shim.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/dist/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/out/adapter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/out/adapter_no_global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/out/esbuild.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/src/js/adapter_core.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/src/js/adapter_core5.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/src/js/adapter_factory.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/src/js/chrome/chrome_shim.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/src/js/chrome/getdisplaymedia.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/src/js/chrome/getusermedia.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/src/js/common_shim.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/src/js/firefox/firefox_shim.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/src/js/firefox/getdisplaymedia.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/src/js/firefox/getusermedia.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/src/js/safari/safari_shim.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signal-service/src/main/resources/static/lib/node_modules/webrtc-adapter/src/js/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/videobuss/src/main/java/com/example/videobuss/config/ProcessConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/videobuss/videobuss.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README-RU.md" beforeDir="false" afterPath="$PROJECT_DIR$/README-RU.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/janus/janus.plugin.streaming.jcfg" beforeDir="false" afterPath="$PROJECT_DIR$/janus/janus.plugin.streaming.jcfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/janus/janus.transport.websockets.jcfg" beforeDir="false" afterPath="$PROJECT_DIR$/janus/janus.transport.websockets.jcfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/JanusProxyHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/WebSocketConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/config/JanusProxyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/config/JanusProxyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/config/WebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/config/WebSocketConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/signal-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/signal-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/videobuss/src/main/java/com/example/videobuss/StreamController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/videobuss/src/main/java/com/example/videobuss/VideoBussApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/videobuss/src/main/java/com/example/videobuss/VideoBussApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/videobuss/src/main/java/com/example/videobuss/adapter/controller/StreamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/videobuss/src/main/java/com/example/videobuss/adapter/controller/StreamController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/videobuss/src/main/resources/video.mjpeg" beforeDir="false" afterPath="$PROJECT_DIR$/videobuss/src/main/resources/video.mjpeg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +175,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -27,7 +185,35 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.SignalServiceApplication">
+  <component name="ProjectId" id="31ZmvycxUBIPbd75QlYKrofvD00" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Lenovo/Desktop/farm/SuperFarm/signal-service/src/main/resources/static/lib",
+    "nodejs_package_manager_path": "npm"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Lenovo\Desktop\farm\SuperFarm\signal-service\src\main\resources\static\lib" />
+      <recent name="C:\Users\Lenovo\Desktop\farm\SuperFarm\frontend" />
+      <recent name="C:\Users\Lenovo\Desktop\farm\SuperFarm\signal-service\src\main\resources\static" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Lenovo\Desktop\farm\SuperFarm\signal-service\src\main\resources\static\lib" />
+      <recent name="C:\Users\Lenovo\Desktop\farm\SuperFarm\videobuss\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.VideoBussApplication">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="SuperFarm" />
       <method v="2">
@@ -55,31 +241,66 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+      </list>
+    </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="299932f7-60d5-468f-8907-ac1aedcd8740" name="Changes" comment="" />
+      <created>1755740203924</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1755740203924</updated>
+      <workItem from="1755740205226" duration="40486000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="codex/implement-signaling-service-for-sfu-connection-uvn427" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/config/JanusProxyHandler.java</url>
+          <line>110</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/config/JanusProxyHandler.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/signal-service/src/main/resources/static/app.module.js</url>
+          <line>52</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
