@@ -7,16 +7,8 @@
     <list default="true" id="299932f7-60d5-468f-8907-ac1aedcd8740" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ffmpeg_10000.log" beforeDir="false" afterPath="$PROJECT_DIR$/ffmpeg_10000.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/adapter/core/InMemorySessionStateAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/adapter/core/InMemorySessionStateAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/adapter/in/ws/JanusProxyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/adapter/in/ws/JanusProxyHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/adapter/in/ws/JanusWsAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/adapter/in/ws/JanusWsAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/adapter/out/janus/HttpJanusAdminAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/adapter/out/janus/HttpJanusAdminAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/config/WebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/config/WebSocketConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/constant/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/constant/Const.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/usecase/CloseConnectionInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/usecase/CloseConnectionInteractor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/usecase/ForwardMessageInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/usecase/ForwardMessageInteractor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/usecase/OpenConnectionInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/usecase/OpenConnectionInteractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/usecase/PayloadRewriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/signal-service/src/main/java/com/example/signaling/usecase/PayloadRewriter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +65,7 @@
       <recent name="C:\Users\Lenovo\Desktop\farm\SuperFarm\videobuss\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.SignalServiceApplication">
+  <component name="RunManager" selected="Spring Boot.VideoBussApplication">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="SuperFarm" />
       <method v="2">

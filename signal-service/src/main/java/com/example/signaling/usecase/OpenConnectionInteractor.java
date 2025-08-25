@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import com.example.signaling.constant.*;
 
 import java.security.SecureRandom;
 import java.util.LinkedHashMap;
@@ -63,7 +62,7 @@ public class OpenConnectionInteractor implements OpenConnectionUseCase {
         var janusType = postRes.path(JANUS).asText();
         log.debug("create/message response: {}", postRes);
 
-        var streamData = extractStreamDataOrWait(sessionId, handleId, postRes, janusType);
+        var streamData = extractJanusStreamDataOrWait(sessionId, handleId, postRes, janusType);
         var mountpointId = streamData.path(STREAM).path(ID).asLong();
 
         var videoPort = extractVideoPort(streamData);
@@ -75,25 +74,37 @@ public class OpenConnectionInteractor implements OpenConnectionUseCase {
         return new Mountpoint(sessionId, handleId, mountpointId, rtpHost, videoPort, pin);
     }
 
-    private JsonNode extractStreamDataOrWait(long sessionId, long handleId, JsonNode postRes, String janusType) {
-        JsonNode streamData = null;
-        if (ERROR.equals(janusType)) {
-            var err = postRes.path(ERROR).path(REASON).asText(postRes.toString());
-            throw new IllegalStateException("Janus returned error on create: " + err);
-        } else if (SUCCESS.equals(janusType)) {
-            var pd = postRes.path(PLUGINDATA);
-            if (pd.isObject()) {
-                var d = pd.path(DATA);
-                if (d.has(STREAM)) streamData = d;
-            }
-        } else if (!ACK.equals(janusType)) {
-            throw new IllegalStateException("Unexpected Janus reply on create: " + janusType);
-        }
+    private JsonNode extractJanusStreamDataOrWait(long sessionId, long handleId, JsonNode postRes, String janusType) {
+        // сначала пробуем извлечь из немедленного ответа Janus
+        var streamData = switch (janusType) {
+            case ERROR   -> handleCreateError(postRes);
+            case SUCCESS -> extractStreamDataFromSuccess(postRes);    // вернёт stream или null
+            case ACK     -> null;                                     // ждём событие через long-poll
+            default      -> handleUnexpectedJanusType(janusType);
+        };
 
-        if (streamData == null) {
-            streamData = waitStreamingCreated(sessionId, handleId, 20_000);
-        }
-        return streamData;
+        // если сразу не получили stream — ждём событие "created"
+        return (streamData != null)
+                ? streamData
+                : waitStreamingCreated(sessionId, handleId, 20_000);
+    }
+
+    private JsonNode handleCreateError(JsonNode postRes) {
+        var err = postRes.path(ERROR).path(REASON).asText(postRes.toString());
+        throw new IllegalStateException("Janus returned error on create: " + err);
+    }
+
+    // Ветвь SUCCESS: пытаемся достать plugindata.data.stream
+    private JsonNode extractStreamDataFromSuccess(JsonNode postRes) {
+        var pluginData = postRes.path(PLUGINDATA);
+        if (!pluginData.isObject()) return null;
+        var data = pluginData.path(DATA);
+        return data.has(STREAM) ? data : null;
+    }
+
+    // Ветвь default: неожиданный janusType
+    private JsonNode handleUnexpectedJanusType(String janusType) {
+        throw new IllegalStateException("Unexpected Janus reply on create: " + janusType);
     }
 
     private JsonNode waitStreamingCreated(long sessionId, long handleId, int timeoutMs) {
