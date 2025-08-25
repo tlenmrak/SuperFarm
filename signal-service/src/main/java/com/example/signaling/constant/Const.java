@@ -52,4 +52,13 @@ public final  class Const {
     public static final String SFU_PORT = "sfuPort";
     public static final String TRANSACTION = "transaction";
 
+    public static final String DETACH = "detach";
+    public static final String DESTROY = "destroy";
+    public static final String FORWARD_SLASH = "/";
+    public static final String RID = "?rid=";
+    public static final String MAXEV_10 = "&maxev=10";
+    public static final String ALL = "*";
+    public static final String WS = "/ws";
+    public static final String WS_JANUS = "/ws/janus";
+
 }

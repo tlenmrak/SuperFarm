@@ -38,7 +38,7 @@ public class HttpJanusAdminAdapter implements JanusAdminPort {
     @Override
     public JsonNode attachStreaming(long sessionId) {
         return rest.postForObject(
-                janusHttpUrl + "/" + sessionId,
+                janusHttpUrl + FORWARD_SLASH + sessionId,
                 Map.of(JANUS, ATTACH, PLUGIN, JANUS_PLUGIN_STREAMING, TRANSACTION, tx()),
                 JsonNode.class);
     }
@@ -46,7 +46,7 @@ public class HttpJanusAdminAdapter implements JanusAdminPort {
     @Override
     public JsonNode message(long sessionId, long handleId, Map<String, Object> body) {
         return rest.postForObject(
-                janusHttpUrl + "/" + sessionId + "/" + handleId,
+                janusHttpUrl + FORWARD_SLASH + sessionId + FORWARD_SLASH + handleId,
                 Map.of(JANUS, MESSAGE, BODY, body, TRANSACTION, tx()),
                 JsonNode.class
         );
@@ -54,19 +54,19 @@ public class HttpJanusAdminAdapter implements JanusAdminPort {
 
     @Override
     public void detach(long sessionId, long handleId) {
-        rest.postForObject(janusHttpUrl + "/" + sessionId + "/" + handleId,
-                Map.of("janus", "detach", "transaction", tx()), JsonNode.class);
+        rest.postForObject(janusHttpUrl + FORWARD_SLASH + sessionId + FORWARD_SLASH + handleId,
+                Map.of(JANUS, DETACH, TRANSACTION, tx()), JsonNode.class);
     }
 
     @Override
     public void destroySession(long sessionId) {
-        rest.postForObject(janusHttpUrl + "/" + sessionId,
-                Map.of("janus", "destroy", "transaction", tx()), JsonNode.class);
+        rest.postForObject(janusHttpUrl + FORWARD_SLASH + sessionId,
+                Map.of(JANUS, DESTROY, TRANSACTION, tx()), JsonNode.class);
     }
 
     @Override
     public JsonNode longPollOnce(long sessionId) {
-        var url = janusHttpUrl + "/" + sessionId + "?rid=" + System.nanoTime() + "&maxev=10";
+        var url = janusHttpUrl + FORWARD_SLASH + sessionId + RID + System.nanoTime() + MAXEV_10;
         try {
             return rest.getForObject(url, JsonNode.class);
         } catch (Exception e) {

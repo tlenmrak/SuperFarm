@@ -25,9 +25,9 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class JanusWsAdapter implements JanusWsPort {
 
+    public static final int TIMEOUT = 30;
     @Value("${janus.url}")
     private String janusUrl;
-
     private final StandardWebSocketClient wsClient;
 
     // frontendId -> future Janus WS session
@@ -35,35 +35,36 @@ public class JanusWsAdapter implements JanusWsPort {
 
     @Override
     public CompletableFuture<Void> connectIfNeeded(String fid, WebSocketSession frontend) {
-        var f = futures.computeIfAbsent(fid, key ->
-            CompletableFuture.supplyAsync(() -> connectWithRetry(frontend))
-                .whenComplete((s, ex) -> { if (ex != null) futures.remove(fid); })
-        );
-        return f.thenApply(s -> null);
+        return futures
+                .computeIfAbsent(fid, key -> getWebSocketSessionFuture(fid, frontend))
+                .thenApply(s -> null);
     }
 
     @Override
     public void send(String fid, String payload) throws Exception {
         var s = futures.get(fid);
-        if (s == null) throw new IllegalStateException("Janus WS not connected for fid=" + fid);
+        if (s == null)
+        {
+            throw new IllegalStateException("Janus WS not connected for fid=" + fid);
+        }
         var ws = s.get(30, TimeUnit.SECONDS);
         ws.sendMessage(new TextMessage(payload));
     }
 
     @Override
     public void close(String fid) {
-        var f = futures.remove(fid);
-        if (f != null) {
-            f.whenComplete((s, ex) -> {
-                if (s != null && s.isOpen()) {
-                    try { s.close(); } catch (Exception ignore) {}
-                }
-            });
-            f.cancel(true);
+        var future = futures.remove(fid);
+        if (future != null) {
+            future.whenComplete((success, ex) -> forceCloseConnection(success));
+            future.cancel(true);
         }
     }
 
-    /* ---------------- internal ---------------- */
+    private CompletableFuture<WebSocketSession> getWebSocketSessionFuture(String fid, WebSocketSession frontend) {
+        return CompletableFuture
+                .supplyAsync(() -> connectWithRetry(frontend))
+                .whenComplete((success, error) -> removeFutureIfError(fid, error));
+    }
 
     private WebSocketSession connectWithRetry(WebSocketSession frontendSession) {
         final var maxAttempts = 10;
@@ -72,42 +73,70 @@ public class JanusWsAdapter implements JanusWsPort {
         headers.setSecWebSocketProtocol(List.of("janus-protocol"));
 
         class Handler extends TextWebSocketHandler implements SubProtocolCapable {
-            @Override public List<String> getSubProtocols() { return List.of("janus-protocol"); }
+            @Override
+            public List<String> getSubProtocols() {
+                return List.of("janus-protocol");
+            }
 
-            @Override public void afterConnectionEstablished(WebSocketSession s) {
+            @Override
+            public void afterConnectionEstablished(WebSocketSession s) {
                 log.info("Janus WS connected: uri={} proto={}", s.getUri(), s.getAcceptedProtocol());
             }
 
-            @Override protected void handleTextMessage(WebSocketSession s, TextMessage msg) throws Exception {
+            @Override
+            protected void handleTextMessage(WebSocketSession s, TextMessage msg) throws Exception {
                 if (frontendSession.isOpen()) frontendSession.sendMessage(msg);
             }
 
-            @Override public void handleTransportError(WebSocketSession s, Throwable ex) {
+            @Override
+            public void handleTransportError(WebSocketSession s, Throwable ex) {
                 log.error("Janus WS transport error", ex);
-                try { if (frontendSession.isOpen()) frontendSession.close(CloseStatus.SERVER_ERROR); } catch (Exception ignore) {}
+                try {
+                    if (frontendSession.isOpen()) frontendSession.close(CloseStatus.SERVER_ERROR);
+                } catch (Exception ignore) {
+                }
             }
 
-            @Override public void afterConnectionClosed(WebSocketSession s, CloseStatus st) {
+            @Override
+            public void afterConnectionClosed(WebSocketSession s, CloseStatus st) {
                 log.info("Janus WS closed: code={} reason={}", st.getCode(), st.getReason());
             }
         }
 
-        for (int attempt = 1; attempt <= maxAttempts; attempt++) {
+        for (var attempt = 1; attempt <= maxAttempts; attempt++) {
             try {
                 return wsClient
-                    .doHandshake(new Handler(), headers, URI.create(janusUrl))
-                    .get(30, TimeUnit.SECONDS);
+                        .doHandshake(new Handler(), headers, URI.create(janusUrl))
+                        .get(TIMEOUT, TimeUnit.SECONDS);
             } catch (Exception e) {
-                long backoffMs = 500L * attempt;
+                var backoffMs = 500L * attempt;
                 log.warn("Janus WS not ready (try {}/{}): {} — retry in {} ms",
                         attempt, maxAttempts, e.getMessage(), backoffMs);
-                if (attempt == maxAttempts) throw new RuntimeException(e);
-                try { Thread.sleep(backoffMs); } catch (InterruptedException ie) {
+                if (attempt == maxAttempts) {
+                    throw new RuntimeException(e);
+                }
+                try {
+                    Thread.sleep(backoffMs);
+                } catch (InterruptedException ie) {
                     Thread.currentThread().interrupt();
                     throw new RuntimeException(ie);
                 }
             }
         }
         throw new IllegalStateException("Unreachable");
+    }
+    private void removeFutureIfError(String fid, Throwable error) {
+        if (error != null) {
+            futures.remove(fid);
+        }
+    }
+
+    private void forceCloseConnection(WebSocketSession success) {
+        if (success != null && success.isOpen()) {
+            try {
+                success.close();
+            } catch (Exception ignore) {
+            }
+        }
     }
 }

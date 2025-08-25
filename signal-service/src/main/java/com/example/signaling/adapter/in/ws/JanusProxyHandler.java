@@ -1,5 +1,6 @@
 package com.example.signaling.adapter.in.ws;
 
+import com.example.signaling.model.dto.Mountpoint;
 import com.example.signaling.port.in.CloseConnectionUseCase;
 import com.example.signaling.port.in.ForwardMessageUseCase;
 import com.example.signaling.port.in.OpenConnectionUseCase;
@@ -30,16 +31,9 @@ public class JanusProxyHandler extends TextWebSocketHandler implements SubProtoc
 
     @Override
     public void afterConnectionEstablished(WebSocketSession frontend) {
-        final var fid = frontend.getId();
-        openConnectionUseCase.open(fid) // создаём mountpoint заранее (асинхронно)
-                .whenComplete((mp, ex) -> {
-                    if (ex != null) {
-                        log.error("Failed to prepare mountpoint for fid={}", fid, ex);
-                        safeClose(frontend, CloseStatus.SERVER_ERROR);
-                    } else {
-                        log.info("Mountpoint {} ready at {}:{}", mp.mountpointId(), mp.host(), mp.port());
-                    }
-                });
+        openConnectionUseCase
+                .open(frontend.getId()) // создаём mountpoint заранее (асинхронно)
+                .whenComplete((mountpoint, error) -> checkResult(frontend, frontend.getId(), mountpoint, error));
     }
 
     @Override
@@ -50,6 +44,15 @@ public class JanusProxyHandler extends TextWebSocketHandler implements SubProtoc
     @Override
     public void afterConnectionClosed(WebSocketSession frontend, CloseStatus status) {
         closeConnectionUseCase.close(frontend.getId());
+    }
+
+    private void checkResult(WebSocketSession frontend, String fid, Mountpoint mountpoint, Throwable error) {
+        if (error != null) {
+            log.error("Failed to prepare mountpoint for fid={}", fid, error);
+            safeClose(frontend, CloseStatus.SERVER_ERROR);
+        } else {
+            log.info("Mountpoint {} ready at {}:{}", mountpoint.mountpointId(), mountpoint.host(), mountpoint.port());
+        }
     }
 
     private static void safeClose(WebSocketSession s, CloseStatus status) {

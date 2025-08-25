@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import com.example.signaling.constant.*;
+
 import java.security.SecureRandom;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -24,6 +25,9 @@ import static com.example.signaling.constant.Const.*;
 public class OpenConnectionInteractor implements OpenConnectionUseCase {
 
 
+    public static final String KEEPALIVE = "keepalive";
+    public static final String EVENT = "event";
+    public static final String JANUS_PLUGIN_STREAMING = "janus.plugin.streaming";
     private final JanusAdminPort janus;
     private final SessionStatePort state;
 
@@ -39,7 +43,7 @@ public class OpenConnectionInteractor implements OpenConnectionUseCase {
     public CompletableFuture<Mountpoint> open(String frontendId) {
         // Создание mountpoint — асинхронно, кэшируется в state
         return state.getOrInitMountpoint(frontendId, () ->
-            CompletableFuture.supplyAsync(this::createMountpointFlow)
+                CompletableFuture.supplyAsync(this::createMountpointFlow)
         );
     }
 
@@ -47,28 +51,28 @@ public class OpenConnectionInteractor implements OpenConnectionUseCase {
 
     private Mountpoint createMountpointFlow() {
         var sessionInfo = janus.createSession();
-        long sessionId = sessionInfo.path(DATA).path(ID).asLong();
+        var sessionId = sessionInfo.path(DATA).path(ID).asLong();
 
         var attachInfo = janus.attachStreaming(sessionId);
-        long handleId = attachInfo.path(DATA).path(ID).asLong();
+        var handleId = attachInfo.path(DATA).path(ID).asLong();
 
-        String pin = sixDigitPin();
+        var pin = sixDigitPin();
         var body = mountpointCreateBody(sessionId, pin);
         var postRes = janus.message(sessionId, handleId, body);
 
-        String janusType = postRes.path(JANUS).asText();
+        var janusType = postRes.path(JANUS).asText();
         log.debug("create/message response: {}", postRes);
 
-        JsonNode streamData = extractStreamDataOrWait(sessionId, handleId, postRes, janusType);
-        long mpId = streamData.path(STREAM).path(ID).asLong();
+        var streamData = extractStreamDataOrWait(sessionId, handleId, postRes, janusType);
+        var mountpointId = streamData.path(STREAM).path(ID).asLong();
 
-        Integer videoPort = extractVideoPort(streamData);
+        var videoPort = extractVideoPort(streamData);
         if (videoPort == null) {
             throw new IllegalStateException("Janus created stream but no video port: " + streamData);
         }
-        log.info("Created mountpoint {} on {}:{}", mpId, rtpHost, videoPort);
+        log.info("Created mountpoint {} on {}:{}", mountpointId, rtpHost, videoPort);
 
-        return new Mountpoint(sessionId, handleId, mpId, rtpHost, videoPort, pin);
+        return new Mountpoint(sessionId, handleId, mountpointId, rtpHost, videoPort, pin);
     }
 
     private JsonNode extractStreamDataOrWait(long sessionId, long handleId, JsonNode postRes, String janusType) {
@@ -93,22 +97,32 @@ public class OpenConnectionInteractor implements OpenConnectionUseCase {
     }
 
     private JsonNode waitStreamingCreated(long sessionId, long handleId, int timeoutMs) {
-        long deadline = System.currentTimeMillis() + timeoutMs;
+        var deadline = System.currentTimeMillis() + timeoutMs;
         while (System.currentTimeMillis() < deadline) {
-            var ev = janus.longPollOnce(sessionId);
-            if (ev == null) continue;
+            var janusResponse = janus.longPollOnce(sessionId);
+            if (janusResponse == null) {
+                continue;
+            }
 
-            var jt = ev.path(JANUS).asText();
-            log.debug("LP event: {}", ev);
+            var jt = janusResponse.path(JANUS).asText();
+            log.debug("LP event: {}", janusResponse);
 
-            if ("keepalive".equals(jt) || TIMEOUT.equals(jt)) continue;
-            if (!"event".equals(jt)) continue;
+            if (KEEPALIVE.equals(jt) || TIMEOUT.equals(jt)) {
+                continue;
+            }
+            if (!EVENT.equals(jt)) {
+                continue;
+            }
 
-            long sender = ev.path(SENDER).asLong();
-            if (sender != handleId) continue;
+            var sender = janusResponse.path(SENDER).asLong();
+            if (sender != handleId) {
+                continue;
+            }
 
-            var pd = ev.path(PLUGINDATA);
-            if (!"janus.plugin.streaming".equals(pd.path(PLUGIN).asText())) continue;
+            var pd = janusResponse.path(PLUGINDATA);
+            if (!JANUS_PLUGIN_STREAMING.equals(pd.path(PLUGIN).asText())) {
+                continue;
+            }
 
             var data = pd.path(DATA);
             if (data.has(ERROR)) {
@@ -155,4 +169,5 @@ public class OpenConnectionInteractor implements OpenConnectionUseCase {
     private static String sixDigitPin() {
         return String.format(FORMAT_PIN, SR.nextInt(1_000_000));
     }
+
 }

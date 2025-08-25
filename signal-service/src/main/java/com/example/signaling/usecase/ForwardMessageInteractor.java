@@ -28,16 +28,16 @@ public class ForwardMessageInteractor implements ForwardMessageUseCase {
         janusWs.connectIfNeeded(fid, frontend).get();
 
         // 2) получить/дождаться mountpoint
-        Mountpoint mp = state.getOrInitMountpoint(fid, null).get();
+        var mountpoint = state.getOrInitMountpoint(fid, null).get();
 
         // 3) запустить VideoBuss ровно один раз
         if (state.markStartedOnce(fid)) {
-            videoBuss.start(mp.host(), mp.port());
-            log.info("Requested VideoBuss to stream to {}:{}", mp.host(), mp.port());
+            videoBuss.start(mountpoint.host(), mountpoint.port());
+            log.info("Requested VideoBuss to stream to {}:{}", mountpoint.host(), mountpoint.port());
         }
 
         // 4) переписать payload (watch.id/pin) и отправить в Janus
-        String patched = rewriter.rewriteWatch(payload, mp.mountpointId(), mp.pin());
+        var patched = rewriter.rewriteWatch(payload, mountpoint.mountpointId(), mountpoint.pin());
         janusWs.send(fid, patched);
     }
 }
